@@ -32,32 +32,31 @@ class User extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
-	public function history_pemesanan()
+	public function tacit()
 	{
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
+		$this->data['content']	= 'tacit';
 		$this->template($this->data, $this->module);
 	}
 
-	public function testimoni()
+	public function explicit()
 	{
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
+		$this->data['content']	= 'explicit';
 		$this->template($this->data, $this->module);
 	}
 
-
-	public function profil()
+	public function profile()
 	{
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
+		$this->data['content']	= 'profile';
 		$this->template($this->data, $this->module);
 	}
 
 	public function ganti_password()
 	{
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
+		$this->data['content']	= 'ganti_password';
 		$this->template($this->data, $this->module);
 	}
 }

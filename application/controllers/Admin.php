@@ -32,66 +32,39 @@ class Admin extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
-	public function data_menu()
+	public function data_user()
 	{
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'menu';
+		$this->data['content']	= 'data_user';
 		$this->template($this->data, $this->module);
 	}
 
-	public function data_paket()
+		public function tacit()
 	{
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
+		$this->data['content']	= 'tacit';
 		$this->template($this->data, $this->module);
 	}
 
-	public function detail_paket()
+	public function explicit()
 	{
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
+		$this->data['content']	= 'explicit';
 		$this->template($this->data, $this->module);
 	}
 
-	public function data_gallery()
+	public function profile()
 	{
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
-		$this->template($this->data, $this->module);
-	}
-
-	public function data_testimonial()
-	{
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
-		$this->template($this->data, $this->module);
-	}
-
-	public function data_pemesanan()
-	{
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
-		$this->template($this->data, $this->module);
-	}
-
-	public function pemesanan_detail()
-	{
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
-		$this->template($this->data, $this->module);
-	}
-
-	public function history_pembayaran()
-	{
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
+		$this->data['content']	= 'profile';
 		$this->template($this->data, $this->module);
 	}
 
 	public function ganti_password()
 	{
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
+		$this->data['content']	= 'ganti_password';
 		$this->template($this->data, $this->module);
 	}
+
 }

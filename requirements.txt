@@ -1,35 +1,91 @@
-ada dua jenis paket tour :
-domestik dan internasional
-khusus yang internasional ketika pemesanan diberi option apakah ingin dibantu pembuatan passport dan visa
+---Requirment Per User---
 
-register hanya bisa check dashboard
+User : (Manager ICT dan Staff, Ketua Humas dan staff, ketua bidang HSE dan staff, Manager HR dan staff ) usernya di buat permasing2 karyawan, dengan pake username dan pass masing2 untuk login.
 
-user harus login untuk pesan
+Penjabaran Requirment per User :
+(Manager dan ketua masing2 1 user, dan Staff per bagian masing2 4 User)
 
-login harus konfirmasi email
+A. Manager ICT dan Staff ICT
 
-metode pembayaran menampilkan no rek perusahaan selanjutnya upload foto bukti pembayaran, mendapat email konfirmasi bahwa pembayaran telah diterima dan mendapatkan nomer pemesanan 
+1. Mengelolah dan mengecek berkas dan kelengkapan data di system
 
-setiap selesai trip ketika user membuka website menampilkan box testimoni
+2. Menginput dan mengupdate data prosedur kerja dibidang ICT
 
-live chat customer service
+3. Bisa Mengupload berkas dan video converence di system yg bisa dilihat para karyawan.
 
-price not fixed, semakin banyak jumlah orang yg dipesan semakin murah
+4. . Dapat melihat,Mengedit, menambah dan menghapus prosedur kerja, cara kerja dari bidang masing2.
+
+5. Problem solving terhadap permasalahan diprosedur kerja
+
+B. Ketua Humas dan Staff
+
+1. Bisa mengupload file, foto dan video prosedur kerja dibidang humas
+
+2. Bisa melihat, mengedit, menambah serta menghapus cara kerja dibidang humas.
+
+3. Bisa mengupload video converence tentang bagaimana cara menjalankan kerja di bidang humas.
+(cara menaikan pangkat karyawan, melakukan pelatihan karyawan. Dan meningkatkan kinerja perusahaan, menjalin hubungan dengan katyawan)
+
+4. Problem solving untuk permasalahan yang di hadapi perusahaan dibagian humas, terkait dengan point 3 diatas.
+
+C. Bidang HSE dan staff
+
+1. Bisa mengupload file, foto, video yang berkenaan dengan prosedur kerja dibagian HSE
+
+2. Bisa mengupadate data yang berhububgan dengan proseedur atau cara kerja di bagian HSE
+
+3.Bisa mengupload video converence tentang bagaimana cara menjalankan kerja di bidang HSE (bagaimana cara melakukan tahapan pemagangan bagi anak SMA dan Mahasiswa yg melakukan TA dan Magang, cara bekerja yang baik dan benar dengan memperhatikan keselamatan kerja )
+
+4. Problem solving untuk permasalahan yang di hadapi perusahaan dibagian HSE, terkait dengan point 3 diatas.
+
+D. Manager HR dan Staff
+
+1. Bisa mengupload file, foto, video yang berkenaan dengan prosedur kerja dibagian HR dan staff
+
+2. Bisa mengupadate data yang berhububgan dengan proseedur atau cara kerja di bagian HR dan staff
+
+3.Bisa mengupload video converence tentang bagaimana cara menjalankan kerja di bidang HR ( Pelatihan karyawan, peningkatan kinerja karyawan, cara mengatur kerja karyawan sesuai fungsi)
+
+4. Problem solving untuk permasalahan yang di hadapi perusahaan dibagian HR dan staff, terkait dengan point 3 diatas.
+================================
+===========================
+
+Kan aku masukke 4 bagian kepegawaian, jadi kalo biso bikin cak list pegawai :
+
+1. Manager HR dan staff
+2. Manager Humas dan staff
+3. Manager HSE
+4. Manager ICT dan staff
+
+Dan usernyo, per itu. Cak yg aku jelasi sebelumnyo kemaren.
+
+Usernyo bikin 4 manager, 16 staff.
+
+Untuk username dan pass nyo, beda2ke angko2 belakang be kak.
+
+Misal :
+12345678
+23456789
+345678910
 
 
 
-1. User dak login : biso liat paket yg ado, biso liat testimoni, biso liat gallery foto
+Add knowledge :
+Jadi di fitur ini, user biso nambah pengetahuan sesuai bidangnyo, sesuai dengan prosedur dan kebijakan perusahaan. Baik itu file tacit maupun explicit. ( file PDF, PPT, Video, foto dll)
 
-2. User yang login : samo cak user dak login + pesen menu, live chat, kasih testi
+Delete : untuk menghapus knowledge yg sudah di update.
 
-3. Admin : biso edit menu, biso edit hargo, biso edit paket, biso edit gallery, biso liat jumlah pemesan, biso liat pesanan yg lah dibayar, biso konfirmasi pesanan, biso hapus paket / gallery
+Searcing : untuk mencari pengetahuan yang ingin dipelajari atau di baca/ dilihat. Gek pas kito searcing misal : cara meningkatkan kinerja pegawai, nah gek muncul seluruh dokumen yg bersangkutan dgn keyword tsb. 
 
-4. Pemilik : biso liat laporan penjualan per bulan dan per tahun
+Problem solving : jd kalo ado permasalahan, gek pas di searcing muncul solusi, baik itu tacit maupun exlicit yg berkaitan dgn masalah tsb.
 
-Trs tambahi 1 menu lg ki, itu ado gallery, nah dlm gallery itu agek dibagi lagi sesuai domestik / internasional
-Misal lampung gek ado fotonyo dewek
-Misal singapur ado fotonyo dewek, cak beda folder cak itulah
+Video Conference :
+Di fitur ini, samo cak siaran langsung. Misal ado karywan senior. Yg nak sharng ilmu dan pengalaman di bidangnyo, nah dio presentasi lewat video conference tsb, gek karyawan lain biso liat. Dan user biso liat siapo be yg nonton, siapo be yg coment, siapo be yg like
 
-Utk fotonyo gek aku kasih secepetnyo via flashdisk
+Jadi cak ini kak, kan aku nih pengembangan KM, nah samo cak KM biaso, managemen pengegahuan. Nah kan agek ado tacit an explicit nyo, nah gek seluruh penhetahuan di himpun di sistem itu kan, pas di searcing misal, cara melakukan pelatihan terhadap pegawai baru, nah gek muncul SOP samo misal ado video dll nyo, muncul di list.
 
+Terus ado firur add/update jugo kan, kalau misal nak nambah knowledgenyo.
 
+Terus, misal ado permasalahan yg dihadapi di suatu bidang, gek muncul solusi dr permasalahan tsbt. Baik itu tacit dan explicit nyo.
+
+Nah, ado video conference nyo, misal aku sbg karyawan, yg sdh senior, aku nak sharing pengetahuan aku lewat video conference itu, gek karyawan yg satu bidang biso ngeliat video itu. Kito biso liat di sistem itu, siapo be yg nonton, siapo be yg coment
