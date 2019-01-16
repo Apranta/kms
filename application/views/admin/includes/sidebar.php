@@ -11,46 +11,71 @@
                         <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
                         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                            <li class="nav-item start active open">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="icon-home"></i>
+                            <li class="nav-item  ">
+                                <a href="layout_blank_page.html" class="nav-link ">
+                                    <i class="icon-layers"></i>
                                     <span class="title">Dashboard</span>
-                                    <span class="selected"></span>
-                                    <span class="arrow open"></span>
                                 </a>
-                                <ul class="sub-menu">
-                                    <li class="nav-item start active open">
-                                        <a href="index.html" class="nav-link ">
-                                            <i class="icon-bar-chart"></i>
-                                            <span class="title">Dashboard 1</span>
-                                            <span class="selected"></span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="heading">
-                                <h3 class="uppercase">Features</h3>
+                                <h3 class="uppercase">Data Pengetahuan</h3>
                             </li>
                             <li class="nav-item  ">
                                 <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="icon-diamond"></i>
-                                    <span class="title">UI Features</span>
+                                    <i class="icon-list"></i>
+                                    <span class="title">Tacit</span>
                                     <span class="arrow"></span>
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
                                         <a href="ui_metronic_grid.html" class="nav-link ">
-                                            <span class="title">Metronic Grid System</span>
+                                            <span class="title">Tambah Tacit</span>
                                         </a>
                                     </li>
                                     <li class="nav-item  ">
                                         <a href="ui_colors.html" class="nav-link ">
-                                            <span class="title">Color Library</span>
+                                            <span class="title">List Tacit</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="icon-list"></i>
+                                    <span class="title">Explicit</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item  ">
+                                        <a href="ui_metronic_grid.html" class="nav-link ">
+                                            <span class="title">Tambah Explicit</span>
                                         </a>
                                     </li>
                                     <li class="nav-item  ">
-                                        <a href="ui_general.html" class="nav-link ">
-                                            <span class="title">General Components</span>
+                                        <a href="ui_colors.html" class="nav-link ">
+                                            <span class="title">List Explicit</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="heading">
+                                <h3 class="uppercase">Data User</h3>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="icon-list"></i>
+                                    <span class="title">Karyawan</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item  ">
+                                        <a href="ui_metronic_grid.html" class="nav-link ">
+                                            <span class="title">HR</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                        <a href="ui_colors.html" class="nav-link ">
+                                            <span class="title">ICT</span>
                                         </a>
                                     </li>
                                 </ul>

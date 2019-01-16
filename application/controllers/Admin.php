@@ -39,10 +39,31 @@ class Admin extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
-		public function tacit()
+	public function tacit()
 	{
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tacit';
+		$this->template($this->data, $this->module);
+	}
+
+	public function tambah_tacit()
+	{
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'tambah_tacit';
+		$this->template($this->data, $this->module);
+	}
+
+	public function edit_tacit()
+	{
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'edit_tacit';
+		$this->template($this->data, $this->module);
+	}
+
+	public function detail_tacit()
+	{
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'detail_tacit';
 		$this->template($this->data, $this->module);
 	}
 
@@ -50,6 +71,27 @@ class Admin extends MY_Controller
 	{
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'explicit';
+		$this->template($this->data, $this->module);
+	}
+
+	public function tambah_explicit()
+	{
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'tambah_explicit';
+		$this->template($this->data, $this->module);
+	}
+
+	public function edit_explicit()
+	{
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'edit_explicit';
+		$this->template($this->data, $this->module);
+	}
+
+	public function detail_explicit()
+	{
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'detail_explicit';
 		$this->template($this->data, $this->module);
 	}
 
