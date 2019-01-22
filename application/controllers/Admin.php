@@ -17,7 +17,7 @@ class Admin extends MY_Controller
 			redirect('login');
 		}
 
-		if ($this->data['id_role'] != 2)
+		if ($this->data['id_role'] != 'admin')
 		{
 			$this->session->sess_destroy();
 			$this->flashmsg('Anda harus login sebagai admin untuk mengakses halaman tersebut', 'danger');
