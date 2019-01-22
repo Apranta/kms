@@ -78,9 +78,8 @@ class Login extends MY_Controller
 				'username'	=> $this->POST('username'),
 				'password'	=> md5($password),
 				'nama'		=> $this->POST('nama'),
-				'email'		=> $this->POST('email'),
-				'kontak'	=> $this->POST('kontak'),
-				'id_role'	=> $this->POST('id_role'),
+				'telepon'	=> $this->POST('kontak'),
+				'role'	=> $this->POST('id_role'),
 				'alamat'	=> $this->POST('alamat')
 			];
 
