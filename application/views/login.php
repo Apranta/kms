@@ -126,17 +126,17 @@ License: You must have a valid license purchased only from themeforest(the above
         <label class="control-label visible-ie8 visible-ie9">Nama Lengkap</label>
         <input class="form-control placeholder-no-fix" type="text" placeholder="Nama Lengkap" name="nama"/>
     </div>
-    <div class="form-group">
-      <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+    <!-- <div class="form-group">
+        ie8, ie9 does not support html5 placeholder, so we just show field title for that
       <label class="control-label visible-ie8 visible-ie9">Email</label>
       <input class="form-control placeholder-no-fix" type="email" placeholder="Email" name="email"/>
-    </div>
+    </div> -->
     <div class="form-group">
       <label class="control-label visible-ie8 visible-ie9">Alamat</label>
       <input class="form-control placeholder-no-fix" type="text" placeholder="Alamat" name="alamat"/>
     </div>
     <div class="form-group">
-      <label class="control-label visible-ie8 visible-ie9">Kontak</label>
+      <label class="control-label visible-ie8 visible-ie9">Nomor Telepon</label>
       <input class="form-control placeholder-no-fix" type="text" placeholder="Kontak" name="kontak"/>
     </div>
     <p class="hint">
@@ -146,8 +146,8 @@ License: You must have a valid license purchased only from themeforest(the above
       <label class="control-label visible-ie8 visible-ie9">Jenis Akun</label>
       <select class="form-control placeholder-no-fix" required name="id_role">
           <option value="">Pilih Jenis Akun</option>
-          <option value="1">Pemilik Kost</option>
-          <option value="3">Pengguna Biasa</option>
+          <option value="manager">Manager</option>
+          <option value="staff">Staff</option>
       </select>
     </div>
     <div class="form-group">

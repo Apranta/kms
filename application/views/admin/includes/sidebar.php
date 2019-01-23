@@ -12,7 +12,7 @@
                         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                             <li class="nav-item  ">
-                                <a href="layout_blank_page.html" class="nav-link ">
+                                <a href="<?= site_url('Admin') ?>" class="nav-link ">
                                     <i class="icon-layers"></i>
                                     <span class="title">Dashboard</span>
                                 </a>

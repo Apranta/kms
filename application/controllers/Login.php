@@ -9,25 +9,32 @@ class Login extends MY_Controller
 	{
 	    parent::__construct();	
 	    $username 	= $this->session->userdata('username');
-	    $id_role	= $this->session->userdata('id_role');
+		$id_role	= $this->session->userdata('id_role');
+		echo $username;
+		echo $id_role;
+		
 		if (isset($username, $id_role))
 		{
+			echo 'hai';
+			
 			switch ($id_role) 
 			{
-				case 1:
+				case "manager":
 					redirect('pemilik');
 					break;
-
-				case 2:
+				case "staff":
+					redirect('staff');
+					break;
+				case "admin":
 					redirect('admin');
 					break;
-
 				default:
 					redirect('home');
 					break;
 			}
-
+			
 		}
+		
   	}
 
 
@@ -49,6 +56,7 @@ class Login extends MY_Controller
 			];
 
 			$result = $this->pengguna_m->login($this->data);
+			print_r($result);
 			if (!isset($result)) 
 			{
 				$this->flashmsg('Username atau password salah','danger');
@@ -78,9 +86,8 @@ class Login extends MY_Controller
 				'username'	=> $this->POST('username'),
 				'password'	=> md5($password),
 				'nama'		=> $this->POST('nama'),
-				'email'		=> $this->POST('email'),
-				'kontak'	=> $this->POST('kontak'),
-				'id_role'	=> $this->POST('id_role'),
+				'telepon'	=> $this->POST('kontak'),
+				'role'	=> $this->POST('id_role'),
 				'alamat'	=> $this->POST('alamat')
 			];
 

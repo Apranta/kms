@@ -7,22 +7,22 @@ class Admin extends MY_Controller
 		parent::__construct();
 		$this->module = 'admin';
 
-		// $this->data['id_pengguna'] 	= $this->session->userdata('id_pengguna');
-		// $this->data['username'] 	= $this->session->userdata('username');
-	 //    $this->data['id_role']		= $this->session->userdata('id_role');
-		// if (!isset($this->data['id_pengguna'], $this->data['username'], $this->data['id_role']))
-		// {
-		// 	$this->session->sess_destroy();
-		// 	$this->flashmsg('Anda harus login terlebih dahulu', 'danger');
-		// 	redirect('login');
-		// }
+		$this->data['id_pengguna'] 	= $this->session->userdata('id_pengguna');
+		$this->data['username'] 	= $this->session->userdata('username');
+	    $this->data['id_role']		= $this->session->userdata('id_role');
+		if (!isset($this->data['id_pengguna'], $this->data['username'], $this->data['id_role']))
+		{
+			$this->session->sess_destroy();
+			$this->flashmsg('Anda harus login terlebih dahulu', 'danger');
+			redirect('login');
+		}
 
-		// if ($this->data['id_role'] != 2)
-		// {
-		// 	$this->session->sess_destroy();
-		// 	$this->flashmsg('Anda harus login sebagai admin untuk mengakses halaman tersebut', 'danger');
-		// 	redirect('login');
-		// }
+		if ($this->data['id_role'] != 'admin')
+		{
+			$this->session->sess_destroy();
+			$this->flashmsg('Anda harus login sebagai admin untuk mengakses halaman tersebut', 'danger');
+			redirect('login');
+		}
 	}
 
 	public function index()
