@@ -4,30 +4,30 @@
                                 <div class="portlet-title">
                                     <div class="caption font-red-sunglo">
                                         <i class="icon-settings font-red-sunglo"></i>
-                                        <span class="caption-subject bold uppercase"> Edit Tacit</span>
+                                        <span class="caption-subject bold uppercase"> Edit Explicit</span>
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
-                                            <a class="btn btn-sm green dropdown-toggle" href="<?= base_url('admin/tacit') ?>" > <i class="fa fa-angle-left"></i> Kembali
+                                            <a class="btn btn-sm green dropdown-toggle" href="<?= base_url('admin/explicit') ?>" > <i class="fa fa-angle-left"></i> Kembali
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                    <?= form_open('admin/edit_tacit', ['role' => 'form']) ?>
+                                    <?= form_open_multipart('admin/edit_explicit', ['role' => 'form']) ?>
                                         <div class="form-body">
-                                            <input type="hidden" name="id_tacit" value="">
+                                            <input type="hidden" name="id_explicit" value="">
                                             <div class="form-group">
-                                                <label>Judul Tacit</label>
-                                                <input type="text" class="form-control" placeholder="masukan judul tacit" name="judul" value="">
+                                                <label>Judul Explicit</label>
+                                                <input type="text" class="form-control" placeholder="masukan judul tacit" name="judul">
                                             </div>
                                             <div class="form-group">
-                                                <label>Masalah</label>
-                                                <textarea name="masalah" class="form-control" rows="5" value=""></textarea>
+                                                <label>File Pendukung</label>
+                                                <input type="file" class="form-control" name="file">
                                             </div>
                                             <div class="form-group">
-                                                <label>Solusi</label>
-                                                <textarea name="solusi" class="form-control" rows="5" value=""></textarea>
+                                                <label>Keterangan</label>
+                                                <textarea name="masalah" class="form-control" rows="5"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-actions">
