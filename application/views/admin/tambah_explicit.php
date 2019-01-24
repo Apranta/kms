@@ -28,9 +28,31 @@
                                                 <label>Keterangan</label>
                                                 <textarea name="masalah" class="form-control" rows="5"></textarea>
                                             </div>
+                                            <div class="form-group">
+                                                <label>User</label>
+                                                <select name="user" class="form-control">
+                                                    <?php 
+                                                    foreach ($user as $u) {
+                                                        echo "<option value='$u->id_user'>$u->nama</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Validasi</label>
+                                                <select name="validasi" class="form-control">
+                                                    <option value="menunggu">Menunggu</option>
+                                                    <option value="validasi">Validasi</option>
+                                                    <option value="ditolak">ditolak</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Date</label>
+                                                <input type="date" class="form-control"  name="date">
+                                            </div>
                                         </div>
                                         <div class="form-actions">
-                                            <button type="submit" class="btn blue">Submit</button>
+                                            <button type="input" class="btn blue" name="submit">Submit</button>
                                             <button type="button" class="btn default">Cancel</button>
                                         </div>
                                     </form>

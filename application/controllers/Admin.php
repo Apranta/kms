@@ -89,15 +89,19 @@ class Admin extends MY_Controller
 
 	public function explicit()
 	{
+		$this->load->model('Explicit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'explicit';
+		$this->data['explicit'] = $this->Explicit_m->getDataJoin(['user'],['explicit.id_user = user.id_user']);
 		$this->template($this->data, $this->module);
 	}
 
 	public function tambah_explicit()
 	{
+		$this->load->model('User_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tambah_explicit';
+		$this->data['user'] = $this->User_m->get("role like 'staff'");
 		$this->template($this->data, $this->module);
 	}
 
