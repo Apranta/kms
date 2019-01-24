@@ -79,6 +79,13 @@ class Admin extends MY_Controller
 		$this->data['content']	= 'edit_tacit';
 		$this->template($this->data, $this->module);
 	}
+	public function delete_tacit($id)
+	{
+		$this->load->model("Tacit_m");
+		$this->Tacit_m->delete($id);
+		$this->flashmsg('Data saved successfully', 'success');
+		redirect('Admin/tacit');
+	}
 
 	public function detail_tacit()
 	{
