@@ -1,4 +1,4 @@
-<div class="row">
+    <div class="row">
     <div class="col-md-12">
         <div class="portlet light bordered">
                                 <div class="portlet-title">
@@ -27,6 +27,24 @@
                                             <div class="form-group">
                                                 <label>Solusi</label>
                                                 <textarea name="solusi" class="form-control" rows="5"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>User</label>
+                                                <select name="user" class="form-control">
+                                                    <?php 
+                                                    foreach ($user as $u) {
+                                                        echo "<option value='$u->id_user'>$u->nama</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Verifikasi</label>
+                                                <select name="verif" class="form-control">
+                                                    <option value="menunggu">Menunggu</option>
+                                                    <option value="validasi">Validasi</option>
+                                                    <option value="ditolak">ditolak</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-actions">

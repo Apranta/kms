@@ -41,15 +41,19 @@ class Admin extends MY_Controller
 
 	public function tacit()
 	{
+		$this->load->model('Tacit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tacit';
+		$this->data['tacit'] = $this->Tacit_m->getDataJoin(['user'],['tacit.id_user = user.id_user']);
 		$this->template($this->data, $this->module);
 	}
 
 	public function tambah_tacit()
 	{
+		$this->load->model('User_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tambah_tacit';
+		$this->data['user'] = $this->User_m->get("role like 'staff'");
 		$this->template($this->data, $this->module);
 	}
 
