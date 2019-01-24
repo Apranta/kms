@@ -28,12 +28,12 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
-                                        <a href="ui_metronic_grid.html" class="nav-link ">
+                                        <a href="<?=site_url('Admin/tambah_tacit');?>" class="nav-link ">
                                             <span class="title">Tambah Tacit</span>
                                         </a>
                                     </li>
                                     <li class="nav-item  ">
-                                        <a href="ui_colors.html" class="nav-link ">
+                                        <a href="<?=site_url('Admin/tacit');?>" class="nav-link ">
                                             <span class="title">List Tacit</span>
                                         </a>
                                     </li>
@@ -47,12 +47,12 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
-                                        <a href="ui_metronic_grid.html" class="nav-link ">
+                                        <a href="<?=site_url('Admin/tambah_explicit');?>" class="nav-link ">
                                             <span class="title">Tambah Explicit</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
-                                        <a href="ui_colors.html" class="nav-link ">
+                                    <li class="nav-item">
+                                        <a href="<?=site_url('Admin/explicit');?>" class="nav-link ">
                                             <span class="title">List Explicit</span>
                                         </a>
                                     </li>
