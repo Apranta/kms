@@ -135,6 +135,14 @@ class Admin extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
+	public function delete_explicit($id)
+	{
+		$this->load->model("Explicit_m");
+		$this->Explicit_m->delete($id);
+		$this->flashmsg('Data saved successfully', 'success');
+		redirect('Admin/explicit');
+	}
+
 	public function detail_explicit()
 	{
 		$this->data['title']	= 'Dashboard';

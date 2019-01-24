@@ -51,7 +51,7 @@
                                                     <div class="btn-group">
                                                         <a href="<?= base_url('admin/detail-explicit/'.$e->id_explicit) ?>" class="btn btn-info"> <i class="fa fa-eye"></i></a>
                                                         <a href="<?= base_url('admin/edit-explicit/'.$e->id_explicit) ?>" class="btn btn-primary"> <i class="fa fa-edit"></i></a>
-                                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                        <a href="<?= base_url('admin/delete_explicit/'.$e->id_explicit) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
