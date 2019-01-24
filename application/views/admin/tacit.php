@@ -28,6 +28,7 @@
                                                 <th>Solusi</th>
                                                 <th>User</th>
                                                 <th>Validasi</th>
+                                                <th>Date</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -38,6 +39,7 @@
                                         ?>
                                             <tr>
                                                 <td><?=$i++?></td>
+                                                <td><?=$t->judul_tacit?></td>
                                                 <td><?=$t->masalah?></td>
                                                 <td><?=$t->solusi?></td>
                                                 <td><?=$t->nama?></td>

@@ -73,10 +73,28 @@ class Admin extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
-	public function edit_tacit()
+	public function edit_tacit($id)
 	{
+		$this->load->model('User_m');
+		$this->load->model('Tacit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'edit_tacit';
+		$this->data['user'] = $this->User_m->get("role like 'staff'");
+		$this->data['tacit'] = $this->Tacit_m->get_row("id_tacit = $id");
+		if($this->POST('submit')){
+			$data = [
+				'judul_tacit' => $this->POST('judul'),
+				'masalah' => $this->POST('masalah'),
+				'solusi' => $this->POST('solusi'),
+				'id_user' => $this->POST('user'),
+				'validasi' => $this->POST('validasi'),
+				'date' => $this->POST('date')
+			];
+			$this->Tacit_m->update($id,$data);
+			$this->flashmsg('Data update successfully', 'success');
+			redirect('Admin/tacit');
+			exit;
+		}
 		$this->template($this->data, $this->module);
 	}
 	public function delete_tacit($id)
@@ -132,6 +150,7 @@ class Admin extends MY_Controller
 	{
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'edit_explicit';
+		
 		$this->template($this->data, $this->module);
 	}
 
