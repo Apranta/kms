@@ -45,8 +45,8 @@
                                                 <td><?=$t->date?></td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="<?= base_url('admin/detail-tacit/'.$id_tacit) ?>" class="btn btn-info"> <i class="fa fa-eye"></i></a>
-                                                        <a href="<?= base_url('admin/edit-tacit/'.$id_tacit) ?>" class="btn btn-primary"> <i class="fa fa-edit"></i></a>
+                                                        <a href="<?= base_url('admin/detail-tacit/'.$t->id_tacit) ?>" class="btn btn-info"> <i class="fa fa-eye"></i></a>
+                                                        <a href="<?= base_url('admin/edit-tacit/'.$t->id_tacit) ?>" class="btn btn-primary"> <i class="fa fa-edit"></i></a>
                                                         <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                     </div>
                                                 </td>

@@ -51,9 +51,25 @@ class Admin extends MY_Controller
 	public function tambah_tacit()
 	{
 		$this->load->model('User_m');
+		$this->load->model('Tacit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tambah_tacit';
 		$this->data['user'] = $this->User_m->get("role like 'staff'");
+		if($this->POST('submit')){
+			$data = [
+				'id_tacit' => null,
+				'judul_tacit' => $this->POST('judul'),
+				'masalah' => $this->POST('masalah'),
+				'solusi' => $this->POST('solusi'),
+				'id_user' => $this->POST('user'),
+				'validasi' => $this->POST('validasi'),
+				'date' => $this->POST('date')
+			];
+			$this->Tacit_m->insert($data);
+			$this->flashmsg('Data saved successfully', 'success');
+			redirect('Admin/tacit');
+			exit;
+		}
 		$this->template($this->data, $this->module);
 	}
 
