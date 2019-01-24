@@ -99,9 +99,25 @@ class Admin extends MY_Controller
 	public function tambah_explicit()
 	{
 		$this->load->model('User_m');
+		$this->load->model('Explicit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tambah_explicit';
 		$this->data['user'] = $this->User_m->get("role like 'staff'");
+		if($this->POST('submit'))
+		{
+			$data = [
+				"id_explicit" => null,
+				"id_user" => $this->POST('user'),
+				"judul" => $this->POST('judul'),
+				"keterangan" => $this->POST('masalah'),
+				"date" => $this->POST('date'),
+				"validasi" => $this->POST('validasi')
+			];
+			$this->Explicit_m->insert($data);
+			$this->flashmsg('Data save successfully');
+			redirect('Admin/explicit');
+			exit;
+		}
 		$this->template($this->data, $this->module);
 	}
 
