@@ -148,11 +148,35 @@ class Admin extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
-	public function edit_explicit()
+	public function edit_explicit($id)
 	{
+		$this->load->model("Explicit_m");
+		$this->load->model('User_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'edit_explicit';
-		
+		$this->data['user'] = $this->User_m->get("role like 'staff'");
+		$this->data['e'] = $this->Explicit_m->get_row("id_explicit = ".$id);
+		if($this->POST('submit'))
+		{
+				$data = [
+					"id_user" => $this->POST('user'),
+					"judul" => $this->POST('judul'),
+					"keterangan" => $this->POST('masalah'),
+					"date" => $this->POST('date'),
+					"validasi" => $this->POST('validasi'),
+				];
+				$this->Explicit_m->update($id,$data);
+				
+				if($_FILES['file'])
+				{
+					
+					$this->uploadPDF($id,'explicit','file');
+				}
+				
+				$this->flashmsg('Data save successfully');
+				redirect('Admin/explicit');
+				exit;
+		}
 		$this->template($this->data, $this->module);
 	}
 
