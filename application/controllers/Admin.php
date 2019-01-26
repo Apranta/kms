@@ -169,7 +169,6 @@ class Admin extends MY_Controller
 				
 				if($_FILES['file'])
 				{
-					
 					$this->uploadPDF($id,'explicit','file');
 				}
 				
@@ -209,5 +208,22 @@ class Admin extends MY_Controller
 		$this->data['content']	= 'ganti_password';
 		$this->template($this->data, $this->module);
 	}
-
+	public function search()
+	{
+		$this->load->model('User_m');
+		$this->load->model('Tacit_m');
+		$this->load->model('Explicit_m');
+		if($this->POST('submit'))
+		{
+			$cari = $this->POST('cari');
+			$this->data['explicit'] = $this->Explicit_m->getDataJoinWhere(['user'],['explicit.id_user = user.id_user'],"judul like '%$cari%' or keterangan like '%$cari%'");
+			$this->data['tacit'] = $this->Tacit_m->getDataJoinWhere(['user'],['tacit.id_user = user.id_user'],"judul_tacit like '%$cari%' or masalah like '%$cari%' or solusi like '%$cari%'");
+		}else{
+			$this->data['explicit'] = $this->Explicit_m->getDataJoin(['user'],['explicit.id_user = user.id_user']);
+			$this->data['tacit'] = $this->Tacit_m->getDataJoin(['user'],['tacit.id_user = user.id_user']);
+		}
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'search';
+		$this->template($this->data, $this->module);
+	}
 }

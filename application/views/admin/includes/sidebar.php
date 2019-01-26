@@ -80,6 +80,16 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="heading">
+                                <h3 class="uppercase">Search</h3>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="<?=site_url("Admin/search")?>" class="nav-link nav-toggle">
+                                    <i class="icon-list"></i>
+                                    <span class="title">Search</span>
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
                         </ul>
                         <!-- END SIDEBAR MENU -->
                     </div>
