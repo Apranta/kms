@@ -41,23 +41,68 @@ class Admin extends MY_Controller
 
 	public function tacit()
 	{
+		$this->load->model('Tacit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tacit';
+		$this->data['tacit'] = $this->Tacit_m->getDataJoin(['user'],['tacit.id_user = user.id_user']);
 		$this->template($this->data, $this->module);
 	}
 
 	public function tambah_tacit()
 	{
+		$this->load->model('User_m');
+		$this->load->model('Tacit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tambah_tacit';
+		$this->data['user'] = $this->User_m->get("role like 'staff'");
+		if($this->POST('submit')){
+			$data = [
+				'id_tacit' => null,
+				'judul_tacit' => $this->POST('judul'),
+				'masalah' => $this->POST('masalah'),
+				'solusi' => $this->POST('solusi'),
+				'id_user' => $this->POST('user'),
+				'validasi' => $this->POST('validasi'),
+				'date' => $this->POST('date')
+			];
+			$this->Tacit_m->insert($data);
+			$this->flashmsg('Data saved successfully', 'success');
+			redirect('Admin/tacit');
+			exit;
+		}
 		$this->template($this->data, $this->module);
 	}
 
-	public function edit_tacit()
+	public function edit_tacit($id)
 	{
+		$this->load->model('User_m');
+		$this->load->model('Tacit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'edit_tacit';
+		$this->data['user'] = $this->User_m->get("role like 'staff'");
+		$this->data['tacit'] = $this->Tacit_m->get_row("id_tacit = $id");
+		if($this->POST('submit')){
+			$data = [
+				'judul_tacit' => $this->POST('judul'),
+				'masalah' => $this->POST('masalah'),
+				'solusi' => $this->POST('solusi'),
+				'id_user' => $this->POST('user'),
+				'validasi' => $this->POST('validasi'),
+				'date' => $this->POST('date')
+			];
+			$this->Tacit_m->update($id,$data);
+			$this->flashmsg('Data update successfully', 'success');
+			redirect('Admin/tacit');
+			exit;
+		}
 		$this->template($this->data, $this->module);
+	}
+	public function delete_tacit($id)
+	{
+		$this->load->model("Tacit_m");
+		$this->Tacit_m->delete($id);
+		$this->flashmsg('Data saved successfully', 'success');
+		redirect('Admin/tacit');
 	}
 
 	public function detail_tacit()
@@ -69,23 +114,79 @@ class Admin extends MY_Controller
 
 	public function explicit()
 	{
+		$this->load->model('Explicit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'explicit';
+		$this->data['explicit'] = $this->Explicit_m->getDataJoin(['user'],['explicit.id_user = user.id_user']);
 		$this->template($this->data, $this->module);
 	}
 
 	public function tambah_explicit()
 	{
+		$this->load->model('User_m');
+		$this->load->model('Explicit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tambah_explicit';
+		$this->data['user'] = $this->User_m->get("role like 'staff'");
+		if($this->POST('submit'))
+		{
+			
+				$data = [
+					"id_explicit" => null,
+					"id_user" => $this->POST('user'),
+					"judul" => $this->POST('judul'),
+					"keterangan" => $this->POST('masalah'),
+					"date" => $this->POST('date'),
+					"validasi" => $this->POST('validasi'),
+				];
+				$this->Explicit_m->insert($data);
+				$this->uploadPDF($this->db->insert_id(),'explicit','file');
+				$this->flashmsg('Data save successfully');
+				redirect('Admin/explicit');
+				exit;
+		}
 		$this->template($this->data, $this->module);
 	}
 
-	public function edit_explicit()
+	public function edit_explicit($id)
 	{
+		$this->load->model("Explicit_m");
+		$this->load->model('User_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'edit_explicit';
+		$this->data['user'] = $this->User_m->get("role like 'staff'");
+		$this->data['e'] = $this->Explicit_m->get_row("id_explicit = ".$id);
+		if($this->POST('submit'))
+		{
+				$data = [
+					"id_user" => $this->POST('user'),
+					"judul" => $this->POST('judul'),
+					"keterangan" => $this->POST('masalah'),
+					"date" => $this->POST('date'),
+					"validasi" => $this->POST('validasi'),
+				];
+				$this->Explicit_m->update($id,$data);
+				
+				if($_FILES['file'])
+				{
+					
+					$this->uploadPDF($id,'explicit','file');
+				}
+				
+				$this->flashmsg('Data save successfully');
+				redirect('Admin/explicit');
+				exit;
+		}
 		$this->template($this->data, $this->module);
+	}
+
+	public function delete_explicit($id)
+	{
+		$this->load->model("Explicit_m");
+		unlink('assets/file/explicit/'.$id.'.pdf');
+		$this->Explicit_m->delete($id);
+		$this->flashmsg('Data saved successfully', 'success');
+		redirect('Admin/explicit');
 	}
 
 	public function detail_explicit()

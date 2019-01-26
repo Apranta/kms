@@ -21,6 +21,7 @@
                                     </div>
                                     <table class="table table-striped table-responsive"> 
                                         <thead>
+                                        
                                             <tr>
                                                 <th>#</th>
                                                 <th>Judul Explicit</th>
@@ -28,25 +29,33 @@
                                                 <th>File</th>
                                                 <th>User</th>
                                                 <th>Validasi</th>
+                                                <th>Date</th>
                                                 <th>Aksi</th>
                                             </tr>
+                                            
                                         </thead>
                                         <tbody>
+                                        <?php
+                                            $i = 1;
+                                            foreach ($explicit as $e) {
+                                        ?>
                                             <tr>
-                                                <td>1</td>
-                                                <td>data</td>
-                                                <td>data</td>
-                                                <td><a href="<?= base_url('assets/file/explicit/')?>" download class="btn btn-link"><i class="fa fa-download"></i></a></td>
-                                                <td>data</td>
-                                                <td>data</td>
+                                                <td><?=$i++?></td>
+                                                <td><?=$e->judul?></td>
+                                                <td><?=$e->keterangan?></td>
+                                                <td><a href="<?= base_url('assets/file/explicit/'.$e->id_explicit.".pdf")?>" download class="btn btn-link"><i class="fa fa-download"></i></a></td>
+                                                <td><?=$e->nama?></td>
+                                                <td><?=$e->validasi?></td>
+                                                <td><?=$e->date?></td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="<?= base_url('admin/detail-explicit/') ?>" class="btn btn-info"> <i class="fa fa-eye"></i></a>
-                                                        <a href="<?= base_url('admin/edit-explicit/') ?>" class="btn btn-primary"> <i class="fa fa-edit"></i></a>
-                                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                        <a href="<?= base_url('admin/detail-explicit/'.$e->id_explicit) ?>" class="btn btn-info"> <i class="fa fa-eye"></i></a>
+                                                        <a href="<?= base_url('admin/edit-explicit/'.$e->id_explicit) ?>" class="btn btn-primary"> <i class="fa fa-edit"></i></a>
+                                                        <a href="<?= base_url('admin/delete_explicit/'.$e->id_explicit) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
