@@ -130,18 +130,20 @@ class Admin extends MY_Controller
 		$this->data['user'] = $this->User_m->get("role like 'staff'");
 		if($this->POST('submit'))
 		{
-			$data = [
-				"id_explicit" => null,
-				"id_user" => $this->POST('user'),
-				"judul" => $this->POST('judul'),
-				"keterangan" => $this->POST('masalah'),
-				"date" => $this->POST('date'),
-				"validasi" => $this->POST('validasi')
-			];
-			$this->Explicit_m->insert($data);
-			$this->flashmsg('Data save successfully');
-			redirect('Admin/explicit');
-			exit;
+			
+				$data = [
+					"id_explicit" => null,
+					"id_user" => $this->POST('user'),
+					"judul" => $this->POST('judul'),
+					"keterangan" => $this->POST('masalah'),
+					"date" => $this->POST('date'),
+					"validasi" => $this->POST('validasi'),
+				];
+				$this->Explicit_m->insert($data);
+				$this->uploadPDF($this->db->insert_id(),'explicit','file');
+				$this->flashmsg('Data save successfully');
+				redirect('Admin/explicit');
+				exit;
 		}
 		$this->template($this->data, $this->module);
 	}
@@ -157,6 +159,7 @@ class Admin extends MY_Controller
 	public function delete_explicit($id)
 	{
 		$this->load->model("Explicit_m");
+		unlink('assets/file/explicit/'.$id.'.pdf');
 		$this->Explicit_m->delete($id);
 		$this->flashmsg('Data saved successfully', 'success');
 		redirect('Admin/explicit');
