@@ -10,12 +10,12 @@ class Login extends MY_Controller
 	    parent::__construct();	
 	    $username 	= $this->session->userdata('username');
 		$id_role	= $this->session->userdata('id_role');
-		echo $username;
-		echo $id_role;
+		// echo $username;
+		// echo $id_role;
 		
 		if (isset($username, $id_role))
 		{
-			echo 'hai';
+			// echo 'hai';
 			
 			switch ($id_role) 
 			{
