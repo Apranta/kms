@@ -10,6 +10,7 @@ class Admin extends MY_Controller
 		$this->data['id_pengguna'] 	= $this->session->userdata('id_pengguna');
 		$this->data['username'] 	= $this->session->userdata('username');
 	    $this->data['id_role']		= $this->session->userdata('id_role');
+	    $this->data['bidang']		= $this->session->userdata('bidang');
 		if (!isset($this->data['id_pengguna'], $this->data['username'], $this->data['id_role']))
 		{
 			$this->session->sess_destroy();
