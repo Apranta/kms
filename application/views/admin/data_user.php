@@ -12,9 +12,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="btn-group">
-                                <button id="sample_editable_1_2_new" class="btn sbold green"> Add New
+                                <a href="<?= base_url('admin/tambah-karyawan') ?>" class="btn sbold green"> Add New
                                 <i class="fa fa-plus"></i>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -28,30 +28,31 @@
                             <th> Nama </th>
                             <th> Jabatan </th>
                             <th> Bidang </th>
-                            <th> Role </th>
                             <th> Actions </th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i=0; foreach ($data as $value): ?>
                         <tr class="odd gradeX">
                             <td>
-                                1
+                                <?= ++$i ?>
                             </td>
-                            <td> shuxer </td>
-                            <td> Manager
+                            <td> <?= $value->nama ?> </td>
+                            <td> <?= $value->jabatan ?>
                             </td>
                             <td>
-                                 HSE
+                                 <?= $value->bagian ?>
                             </td>
-                            <td class="center"> Manager</td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="" class="btn btn-success">Detail</a>
-                                    <a href="" class="btn btn-primary">Edit</a>
-                                    <a href="" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/detail-user/'.$value->id_user) ?>" class="btn btn-success">Detail</a>
+                                    <a href="<?= base_url('admin/edit-user/'.$value->id_user) ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/data-user?action=delete&id=' . $value->id_user) ?>" class="btn btn-danger">Hapus</a>
                                 </div>
                             </td>
                         </tr>
+                            
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

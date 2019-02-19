@@ -18,7 +18,7 @@ class Pengguna_m extends MY_Model
 				'id_pengguna' 	=> $pengguna->id_user,
 				'username'		=> $pengguna->username,
 				'id_role'		=> $pengguna->role,
-				'bidang'		=> $pengguna->bidang
+				'bagian'		=> $pengguna->bagian
 			]);
 			return $pengguna;
 		}

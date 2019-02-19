@@ -64,18 +64,18 @@
                             <li class="nav-item  ">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                     <i class="icon-list"></i>
-                                    <span class="title">Karyawan</span>
+                                    <span class="title">User</span>
                                     <span class="arrow"></span>
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
-                                        <a href="ui_metronic_grid.html" class="nav-link ">
-                                            <span class="title">HR</span>
+                                        <a href="<?= base_url('admin/tambah-karyawan') ?>" class="nav-link ">
+                                            <span class="title">Tambah User</span>
                                         </a>
                                     </li>
                                     <li class="nav-item  ">
-                                        <a href="ui_colors.html" class="nav-link ">
-                                            <span class="title">ICT</span>
+                                        <a href="<?= base_url('admin/data_user') ?>" class="nav-link ">
+                                            <span class="title">Data User</span>
                                         </a>
                                     </li>
                                 </ul>

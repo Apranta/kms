@@ -10,7 +10,7 @@ class Admin extends MY_Controller
 		$this->data['id_pengguna'] 	= $this->session->userdata('id_pengguna');
 		$this->data['username'] 	= $this->session->userdata('username');
 	    $this->data['id_role']		= $this->session->userdata('id_role');
-	    $this->data['bidang']		= $this->session->userdata('bidang');
+	    $this->data['bagian']		= $this->session->userdata('bagian');
 		if (!isset($this->data['id_pengguna'], $this->data['username'], $this->data['id_role']))
 		{
 			$this->session->sess_destroy();
@@ -35,8 +35,42 @@ class Admin extends MY_Controller
 
 	public function data_user()
 	{
+		$this->load->model('User_m');
+		if ($this->GET('action') === 'delete') {
+			$this->User_m->delete($this->GET('id'));
+			$this->flashmsg('Data berhasil di hapus');
+			redirect('admin/data-user');
+			exit;
+		}
+		$this->data['data']		= $this->User_m->get();
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'data_user';
+		$this->template($this->data, $this->module);
+	}
+
+	public function tambah_karyawan()
+	{
+		$this->load->model('User_m');
+		
+		if ($this->POST('simpan')) {
+			$this->User_m->insert([
+				'username' => $this->POST('username'),
+				'nama'		=> $this->POST('nama'),
+				'alamat'		=> $this->POST('alamat'),
+				'tempat_lahir'		=> $this->POST('tempat_lahir'),
+				'tanggal_lahir'		=> $this->POST('tanggal_lahir'),
+				'telepon'		=> $this->POST('telepon'),
+				'password'		=> md5('123456'),
+				'role'		=> $this->POST('role'),
+				'jabatan'		=> $this->POST('jabatan'),
+				'bagian'		=> $this->POST('bagian'),
+			]);
+			$this->flashmsg('Data save successfully dan password default user adalah 123456');
+			redirect('admin/data-user');
+			exit;
+		}
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'tambah_karyawan';
 		$this->template($this->data, $this->module);
 	}
 
@@ -68,7 +102,7 @@ class Admin extends MY_Controller
 			];
 			$this->Tacit_m->insert($data);
 			$this->flashmsg('Data saved successfully', 'success');
-			redirect('Admin/tacit');
+			redirect('admin/tacit');
 			exit;
 		}
 		$this->template($this->data, $this->module);
@@ -93,7 +127,7 @@ class Admin extends MY_Controller
 			];
 			$this->Tacit_m->update($id,$data);
 			$this->flashmsg('Data update successfully', 'success');
-			redirect('Admin/tacit');
+			redirect('admin/tacit');
 			exit;
 		}
 		$this->template($this->data, $this->module);
@@ -103,7 +137,7 @@ class Admin extends MY_Controller
 		$this->load->model("Tacit_m");
 		$this->Tacit_m->delete($id);
 		$this->flashmsg('Data saved successfully', 'success');
-		redirect('Admin/tacit');
+		redirect('admin/tacit');
 	}
 
 	public function detail_tacit()
@@ -143,7 +177,7 @@ class Admin extends MY_Controller
 				$this->Explicit_m->insert($data);
 				$this->uploadPDF($this->db->insert_id(),'explicit','file');
 				$this->flashmsg('Data save successfully');
-				redirect('Admin/explicit');
+				redirect('admin/explicit');
 				exit;
 		}
 		$this->template($this->data, $this->module);
@@ -174,7 +208,7 @@ class Admin extends MY_Controller
 				}
 				
 				$this->flashmsg('Data save successfully');
-				redirect('Admin/explicit');
+				redirect('admin/explicit');
 				exit;
 		}
 		$this->template($this->data, $this->module);
@@ -186,7 +220,7 @@ class Admin extends MY_Controller
 		unlink('assets/file/explicit/'.$id.'.pdf');
 		$this->Explicit_m->delete($id);
 		$this->flashmsg('Data saved successfully', 'success');
-		redirect('Admin/explicit');
+		redirect('admin/explicit');
 	}
 
 	public function detail_explicit()
