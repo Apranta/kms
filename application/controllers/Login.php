@@ -20,16 +20,13 @@ class Login extends MY_Controller
 			switch ($id_role) 
 			{
 				case "manager":
-					redirect('pemilik');
+					redirect('manager');
 					break;
 				case "staff":
 					redirect('staff');
 					break;
 				case "admin":
 					redirect('admin');
-					break;
-				default:
-					redirect('home');
 					break;
 			}
 			

@@ -81,7 +81,7 @@
                                 </ul>
                             </li>
                             <li class="heading">
-                                <h3 class="uppercase">Search</h3>
+                                <h3 class="uppercase">Search Pengetahuan</h3>
                             </li>
                             <li class="nav-item  ">
                                 <a href="<?=site_url("Admin/search")?>" class="nav-link nav-toggle">
@@ -89,6 +89,28 @@
                                     <span class="title">Search</span>
                                     <span class="arrow"></span>
                                 </a>
+                            </li>
+                            <li class="heading">
+                                <h3 class="uppercase">Video Konferensi</h3>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="icon-list"></i>
+                                    <span class="title">Video Konferensi</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item  ">
+                                        <a href="<?= base_url('admin/tambah-video') ?>" class="nav-link ">
+                                            <span class="title">Tambah Video</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                        <a href="<?= base_url('admin/data_video') ?>" class="nav-link ">
+                                            <span class="title">Data Video</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                         <!-- END SIDEBAR MENU -->

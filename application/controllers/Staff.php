@@ -10,6 +10,7 @@ class Staff extends MY_Controller
 		$this->data['id_pengguna'] 	= $this->session->userdata('id_pengguna');
 		$this->data['username'] 	= $this->session->userdata('username');
 	    $this->data['id_role']		= $this->session->userdata('id_role');
+	    $this->data['bagian']		= $this->session->userdata('bagian');
 		if (!isset($this->data['id_pengguna'], $this->data['username'], $this->data['id_role']))
 		{
 			$this->session->sess_destroy();
@@ -47,16 +48,14 @@ class Staff extends MY_Controller
 		$this->load->model('Tacit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tambah_tacit';
-		$this->data['user'] = $this->User_m->get("role like 'staff'");
 		if($this->POST('submit')){
 			$data = [
-				'id_tacit' => null,
 				'judul_tacit' => $this->POST('judul'),
 				'masalah' => $this->POST('masalah'),
 				'solusi' => $this->POST('solusi'),
-				'id_user' => $this->POST('user'),
-				'validasi' => $this->POST('validasi'),
-				'date' => $this->POST('date')
+				'id_user' => $this->data['id_pengguna'],
+				'validasi' => "menunggu",
+				'date' => date("Y-m-d")
 			];
 			$this->Tacit_m->insert($data);
 			$this->flashmsg('Data saved successfully', 'success');
@@ -79,9 +78,6 @@ class Staff extends MY_Controller
 				'judul_tacit' => $this->POST('judul'),
 				'masalah' => $this->POST('masalah'),
 				'solusi' => $this->POST('solusi'),
-				'id_user' => $this->POST('user'),
-				'validasi' => $this->POST('validasi'),
-				'date' => $this->POST('date')
 			];
 			$this->Tacit_m->update($id,$data);
 			$this->flashmsg('Data update successfully', 'success');
@@ -120,17 +116,15 @@ class Staff extends MY_Controller
 		$this->load->model('Explicit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tambah_explicit';
-		$this->data['user'] = $this->User_m->get("role like 'staff'");
 		if($this->POST('submit'))
 		{
 			
 				$data = [
-					"id_explicit" => null,
-					"id_user" => $this->POST('user'),
+					"id_user" => $this->data['id_pengguna'],
 					"judul" => $this->POST('judul'),
 					"keterangan" => $this->POST('masalah'),
-					"date" => $this->POST('date'),
-					"validasi" => $this->POST('validasi'),
+					'date' => date("Y-m-d"),
+					"validasi" => "menunggu",
 				];
 				$this->Explicit_m->insert($data);
 				$this->uploadPDF($this->db->insert_id(),'explicit','file');
@@ -147,16 +141,12 @@ class Staff extends MY_Controller
 		$this->load->model('User_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'edit_explicit';
-		$this->data['user'] = $this->User_m->get("role like 'staff'");
 		$this->data['e'] = $this->Explicit_m->get_row("id_explicit = ".$id);
 		if($this->POST('submit'))
 		{
 				$data = [
-					"id_user" => $this->POST('user'),
 					"judul" => $this->POST('judul'),
 					"keterangan" => $this->POST('masalah'),
-					"date" => $this->POST('date'),
-					"validasi" => $this->POST('validasi'),
 				];
 				$this->Explicit_m->update($id,$data);
 				
@@ -217,6 +207,31 @@ class Staff extends MY_Controller
 		}
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'search';
+		$this->template($this->data, $this->module);
+	}
+
+	public function data_video()
+	{
+		$this->load->model('Video_conf_m');
+		if ($this->POST('simpan')) {
+			$this->Video_conf_m->insert([
+				'judul_video' => $this->POST('judul'),
+				'url'			=> $this->POST('url'),
+				'date'			=> $this->POST('date'),
+				'deskripsi'		=> $this->POST('deskripsi')
+			]);
+				$this->flashmsg('Data save successfully');
+				redirect('admin/data_video');
+				exit;
+		}
+		$date = date('Y-m-d');
+		$this->data['video']	= $this->Video_conf_m->get(['id_user' => $this->data['id_pengguna']]);
+		$this->data['berakhir']	= $this->Video_conf_m->getDateBerlangsung();
+		$this->data['berlangsung']	= $this->Video_conf_m->getDateBerakhir();
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'data_video';
+		// $this->dump($this->data);
+		// exit;
 		$this->template($this->data, $this->module);
 	}
 }

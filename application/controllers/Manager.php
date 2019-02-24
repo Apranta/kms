@@ -1,11 +1,11 @@
 <?php 
 
-class Admin extends MY_Controller
+class Manager extends MY_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->module = 'admin';
+		$this->module = 'manager';
 
 		$this->data['id_pengguna'] 	= $this->session->userdata('id_pengguna');
 		$this->data['username'] 	= $this->session->userdata('username');
@@ -18,10 +18,10 @@ class Admin extends MY_Controller
 			redirect('login');
 		}
 
-		if ($this->data['id_role'] != 'admin')
+		if ($this->data['id_role'] != 'manager')
 		{
 			$this->session->sess_destroy();
-			$this->flashmsg('Anda harus login sebagai admin untuk mengakses halaman tersebut', 'danger');
+			$this->flashmsg('Anda harus login sebagai staff untuk mengakses halaman tersebut', 'danger');
 			redirect('login');
 		}
 	}
@@ -30,47 +30,6 @@ class Admin extends MY_Controller
 	{
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'dashboard';
-		$this->template($this->data, $this->module);
-	}
-
-	public function data_user()
-	{
-		$this->load->model('User_m');
-		if ($this->GET('action') === 'delete') {
-			$this->User_m->delete($this->GET('id'));
-			$this->flashmsg('Data berhasil di hapus');
-			redirect('admin/data-user');
-			exit;
-		}
-		$this->data['data']		= $this->User_m->get();
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'data_user';
-		$this->template($this->data, $this->module);
-	}
-
-	public function tambah_karyawan()
-	{
-		$this->load->model('User_m');
-		
-		if ($this->POST('simpan')) {
-			$this->User_m->insert([
-				'username' => $this->POST('username'),
-				'nama'		=> $this->POST('nama'),
-				'alamat'		=> $this->POST('alamat'),
-				'tempat_lahir'		=> $this->POST('tempat_lahir'),
-				'tanggal_lahir'		=> $this->POST('tanggal_lahir'),
-				'telepon'		=> $this->POST('telepon'),
-				'password'		=> md5('123456'),
-				'role'		=> $this->POST('role'),
-				'jabatan'		=> $this->POST('jabatan'),
-				'bagian'		=> $this->POST('bagian'),
-			]);
-			$this->flashmsg('Data save successfully dan password default user adalah 123456');
-			redirect('admin/data-user');
-			exit;
-		}
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'tambah_karyawan';
 		$this->template($this->data, $this->module);
 	}
 
@@ -95,12 +54,12 @@ class Admin extends MY_Controller
 				'masalah' => $this->POST('masalah'),
 				'solusi' => $this->POST('solusi'),
 				'id_user' => $this->data['id_pengguna'],
-				'validasi' => 'validasi',
+				'validasi' => "menunggu",
 				'date' => date("Y-m-d")
 			];
 			$this->Tacit_m->insert($data);
 			$this->flashmsg('Data saved successfully', 'success');
-			redirect('admin/tacit');
+			redirect('staff/tacit');
 			exit;
 		}
 		$this->template($this->data, $this->module);
@@ -112,6 +71,7 @@ class Admin extends MY_Controller
 		$this->load->model('Tacit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'edit_tacit';
+		$this->data['user'] = $this->User_m->get("role like 'staff'");
 		$this->data['tacit'] = $this->Tacit_m->get_row("id_tacit = $id");
 		if($this->POST('submit')){
 			$data = [
@@ -121,7 +81,7 @@ class Admin extends MY_Controller
 			];
 			$this->Tacit_m->update($id,$data);
 			$this->flashmsg('Data update successfully', 'success');
-			redirect('admin/tacit');
+			redirect('staff/tacit');
 			exit;
 		}
 		$this->template($this->data, $this->module);
@@ -131,7 +91,7 @@ class Admin extends MY_Controller
 		$this->load->model("Tacit_m");
 		$this->Tacit_m->delete($id);
 		$this->flashmsg('Data saved successfully', 'success');
-		redirect('admin/tacit');
+		redirect('staff/tacit');
 	}
 
 	public function detail_tacit()
@@ -156,7 +116,6 @@ class Admin extends MY_Controller
 		$this->load->model('Explicit_m');
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'tambah_explicit';
-		$this->data['user'] = $this->User_m->get("role like 'staff'");
 		if($this->POST('submit'))
 		{
 			
@@ -164,13 +123,13 @@ class Admin extends MY_Controller
 					"id_user" => $this->data['id_pengguna'],
 					"judul" => $this->POST('judul'),
 					"keterangan" => $this->POST('masalah'),
-					"date" => date("Y-m-d"),
-					"validasi" => 'validasi',
+					'date' => date("Y-m-d"),
+					"validasi" => "menunggu",
 				];
 				$this->Explicit_m->insert($data);
 				$this->uploadPDF($this->db->insert_id(),'explicit','file');
 				$this->flashmsg('Data save successfully');
-				redirect('admin/explicit');
+				redirect('staff/explicit');
 				exit;
 		}
 		$this->template($this->data, $this->module);
@@ -197,7 +156,7 @@ class Admin extends MY_Controller
 				}
 				
 				$this->flashmsg('Data save successfully');
-				redirect('admin/explicit');
+				redirect('staff/explicit');
 				exit;
 		}
 		$this->template($this->data, $this->module);
@@ -209,7 +168,7 @@ class Admin extends MY_Controller
 		unlink('assets/file/explicit/'.$id.'.pdf');
 		$this->Explicit_m->delete($id);
 		$this->flashmsg('Data saved successfully', 'success');
-		redirect('admin/explicit');
+		redirect('staff/explicit');
 	}
 
 	public function detail_explicit()
@@ -251,6 +210,15 @@ class Admin extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
+	public function data_user()
+	{
+		$this->load->model('User_m');
+		$this->data['data']		= $this->User_m->get(['bagian' => $this->data['bagian'] , 'role' => 'staff']);
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'data_user';
+		$this->template($this->data, $this->module);
+	}
+
 	public function data_video()
 	{
 		$this->load->model('Video_conf_m');
@@ -265,7 +233,6 @@ class Admin extends MY_Controller
 				redirect('admin/data_video');
 				exit;
 		}
-		$date = date('Y-m-d');
 		$this->data['video']	= $this->Video_conf_m->get(['id_user' => $this->data['id_pengguna']]);
 		$this->data['berakhir']	= $this->Video_conf_m->getDateBerlangsung();
 		$this->data['berlangsung']	= $this->Video_conf_m->getDateBerakhir();

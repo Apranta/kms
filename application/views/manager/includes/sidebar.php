@@ -12,7 +12,7 @@
                         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                             <li class="nav-item  ">
-                                <a href="<?= site_url('staff') ?>" class="nav-link ">
+                                <a href="<?= site_url('manager') ?>" class="nav-link ">
                                     <i class="icon-layers"></i>
                                     <span class="title">Dashboard</span>
                                 </a>
@@ -28,12 +28,12 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
-                                        <a href="<?=site_url('staff/tambah_tacit');?>" class="nav-link ">
+                                        <a href="<?=site_url('manager/tambah_tacit');?>" class="nav-link ">
                                             <span class="title">Tambah Tacit</span>
                                         </a>
                                     </li>
                                     <li class="nav-item  ">
-                                        <a href="<?=site_url('staff/tacit');?>" class="nav-link ">
+                                        <a href="<?=site_url('manager/tacit');?>" class="nav-link ">
                                             <span class="title">List Tacit</span>
                                         </a>
                                     </li>
@@ -47,22 +47,39 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
-                                        <a href="<?=site_url('staff/tambah_explicit');?>" class="nav-link ">
+                                        <a href="<?=site_url('manager/tambah_explicit');?>" class="nav-link ">
                                             <span class="title">Tambah Explicit</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?=site_url('staff/explicit');?>" class="nav-link ">
+                                        <a href="<?=site_url('manager/explicit');?>" class="nav-link ">
                                             <span class="title">List Explicit</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="heading">
-                                <h3 class="uppercase">Search</h3>
+                                <h3 class="uppercase">Data User</h3>
                             </li>
                             <li class="nav-item  ">
-                                <a href="<?=site_url("staff/search")?>" class="nav-link nav-toggle">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="icon-list"></i>
+                                    <span class="title">User</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item  ">
+                                        <a href="<?= base_url('manager/data_user') ?>" class="nav-link ">
+                                            <span class="title">Data User</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="heading">
+                                <h3 class="uppercase">Search Pengetahuan</h3>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="<?=site_url("manager/search")?>" class="nav-link nav-toggle">
                                     <i class="icon-list"></i>
                                     <span class="title">Search</span>
                                     <span class="arrow"></span>
@@ -79,12 +96,12 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
-                                        <a href="<?= base_url('staff/tambah-video') ?>" class="nav-link ">
+                                        <a href="<?= base_url('manager/tambah-video') ?>" class="nav-link ">
                                             <span class="title">Tambah Video</span>
                                         </a>
                                     </li>
                                     <li class="nav-item  ">
-                                        <a href="<?= base_url('staff/data_video') ?>" class="nav-link ">
+                                        <a href="<?= base_url('manager/data_video') ?>" class="nav-link ">
                                             <span class="title">Data Video</span>
                                         </a>
                                     </li>
