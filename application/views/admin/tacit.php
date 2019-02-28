@@ -43,7 +43,13 @@
                                                 <td><?=$t->masalah?></td>
                                                 <td><?=$t->solusi?></td>
                                                 <td><?=$t->nama?></td>
-                                                <td><?=$t->validasi?></td>
+                                                <td><?php
+                                                    if($t->validasi == 'menunggu'){
+                                                        ?><a href="<?=site_url('admin/validateTacit/'.$t->id_tacit)?>"><button class="btn btn-success">Validasi</button></a><?php
+                                                    }else{
+                                                        echo $t->validasi;
+                                                    }
+                                                ?></td>
                                                 <td><?=$t->date?></td>
                                                 <td>
                                                     <div class="btn-group">

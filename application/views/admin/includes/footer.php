@@ -68,6 +68,7 @@
         <script src="<?= base_url('assets/metronic') ?>/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
         <script>
+            
             $(document).ready(function()
             {
                 $('#clickmewow').click(function()

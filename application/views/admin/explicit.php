@@ -45,7 +45,13 @@
                                                 <td><?=$e->keterangan?></td>
                                                 <td><a href="<?= base_url('assets/file/explicit/'.$e->id_explicit.".pdf")?>" download class="btn btn-link"><i class="fa fa-download"></i></a></td>
                                                 <td><?=$e->nama?></td>
-                                                <td><?=$e->validasi?></td>
+                                                <td><?php
+                                                    if($e->validasi == 'menunggu'){
+                                                        ?><a href="<?=site_url('admin/validateExplicit/'.$e->id_explicit)?>"><button class="btn btn-success">Validasi</button></a><?php
+                                                    }else{
+                                                        echo $e->validasi;
+                                                    }
+                                                ?></td>
                                                 <td><?=$e->date?></td>
                                                 <td>
                                                     <div class="btn-group">
@@ -55,7 +61,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <?php } ?>
+                                            <?php }?>
                                         </tbody>
                                     </table>
                                 </div>
