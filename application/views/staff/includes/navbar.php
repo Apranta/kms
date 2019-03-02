@@ -8,30 +8,12 @@
                         <!-- END LOGO -->
                         <!-- BEGIN TOPBAR ACTIONS -->
                         <div class="topbar-actions">
-                            <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-                            <form class="search-form" action="extra_search.html" method="GET">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search here" name="query">
-                                    <span class="input-group-btn">
-                                        <a href="javascript:;" class="btn md-skip submit">
-                                            <i class="fa fa-search"></i>
-                                        </a>
-                                    </span>
-                                </div>
-                            </form>
                             <!-- END GROUP NOTIFICATION -->
                             <!-- BEGIN USER PROFILE -->
                             <div class="btn-group-img btn-group">
                                 <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <img src="<?= base_url('assets/metronic') ?>/assets/layouts/layout5/img/avatar1.jpg" alt=""> </button>
                                 <ul class="dropdown-menu-v2" role="menu">
-                                    <li>
-                                        <a href="page_user_profile_1.html">
-                                            <i class="icon-user"></i> My Profile
-                                            <span class="badge badge-danger">1</span>
-                                        </a>
-                                    </li>
-                                    <li class="divider"> </li>
                                     <li>
                                         <a href="<?= base_url('logout') ?>">
                                             <i class="icon-key"></i> Log Out </a>

@@ -100,10 +100,6 @@
                                     <span class="arrow"></span>
                                 </a>
                                 <ul class="sub-menu">
-                                    <li class="nav-item  ">
-                                        <a href="<?= base_url('admin/tambah-video') ?>" class="nav-link ">
-                                            <span class="title">Tambah Video</span>
-                                        </a>
                                     </li>
                                     <li class="nav-item  ">
                                         <a href="<?= base_url('admin/data_video') ?>" class="nav-link ">

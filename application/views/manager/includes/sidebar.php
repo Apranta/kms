@@ -96,11 +96,6 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="nav-item  ">
-                                        <a href="<?= base_url('manager/tambah-video') ?>" class="nav-link ">
-                                            <span class="title">Tambah Video</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item  ">
                                         <a href="<?= base_url('manager/data_video') ?>" class="nav-link ">
                                             <span class="title">Data Video</span>
                                         </a>
