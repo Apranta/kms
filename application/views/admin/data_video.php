@@ -10,14 +10,17 @@
 			<div class="portlet-body">
 				<div class="row">
 					<div class="col-md-6">
-					<?= form_open('admin/data-video') ?>
+						<?= form_open('admin/data-video') ?>
 						<div class="form-group">
 							<label>Judul Video</label>
 							<input type="text" name="judul" class="form-control">
 						</div>
 						<div class="form-group">
 							<label>Url Video Streaming</label>
-							<input type="text" name="url" class="form-control">
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon1">https://www.youtube.com/embed/</span>
+								<input type="text" class="form-control" placeholder="kode url youtube" aria-describedby="sizing-addon1">
+							</div>
 						</div>
 						<div class="form-group">
 							<label>Tanggal Mulai Video</label>
@@ -28,7 +31,7 @@
 							<textarea name="deskripsi" class="form-control" rows="6"></textarea>
 						</div>
 						<input type="submit" name="simpan" value="Simpan" class="btn btn-success">
-					<?= form_close(); ?>
+						<?= form_close(); ?>
 					</div>
 					<div class="col-md-6">
 						<h4>Video Saya</h4>
@@ -58,14 +61,13 @@
 		</div>
 	</div>
 </div>
-
 <div class="row">
 	<div class="col-md-12">
 		<div class="portlet light bordered">
 			<div class="portlet-title">
 				<div class="caption font-dark">
 					<i class="icon-settings font-dark"></i>
-					<span class="caption-subject bold uppercase"> Video Sedang Berlangsung </span>
+					<span class="caption-subject bold uppercase"> Data Video </span>
 				</div>
 			</div>
 			<div class="portlet-body">
@@ -80,47 +82,7 @@
 								</div>
 								<div class="actions">
 									<a href="<?= base_url('admin/detail-video/' . $value->id_video) ?>" class="btn btn-circle red-sunglo btn-sm">
-										<i class="fa fa-eye"></i> Lihat 
-									</a>
-								</div>
-							</div>
-							<div class="portlet-body">
-								<p>
-									<?= $value->deskripsi ?>
-								</p>
-							</div>
-						</div>
-					</div>
-					<?php endforeach ?>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<div class="row">
-	<div class="col-md-12">
-		<div class="portlet light bordered">
-			<div class="portlet-title">
-				<div class="caption font-dark">
-					<i class="icon-settings font-dark"></i>
-					<span class="caption-subject bold uppercase"> Video telah berakhir </span>
-				</div>
-			</div>
-			<div class="portlet-body">
-				<div class="row">
-					<?php  foreach ($berakhir as $value): ?>
-					<div class="col-md-3">
-						<div class="portlet light bordered">
-							<div class="portlet-title">
-								<div class="caption font-dark">
-									<i class="icon-settings font-dark"></i>
-									<span class="caption-subject bold uppercase"> <?= $value->judul_video ?> </span>
-								</div>
-								<div class="actions">
-									<a href="<?= base_url('admin/detail-video/' . $value->id_video) ?>" class="btn btn-circle red-sunglo btn-sm">
-										<i class="fa fa-eye"></i> Lihat 
+										<i class="fa fa-eye"></i> Lihat
 									</a>
 								</div>
 							</div>

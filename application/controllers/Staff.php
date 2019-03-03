@@ -218,7 +218,8 @@ class Staff extends MY_Controller
 				'judul_video' => $this->POST('judul'),
 				'url'			=> $this->POST('url'),
 				'date'			=> $this->POST('date'),
-				'deskripsi'		=> $this->POST('deskripsi')
+				'deskripsi'		=> $this->POST('deskripsi'),
+				'id_user'		=> $this->data['id_pengguna']
 			]);
 				$this->flashmsg('Data save successfully');
 				redirect('admin/data_video');
@@ -227,9 +228,21 @@ class Staff extends MY_Controller
 		$date = date('Y-m-d');
 		$this->data['video']	= $this->Video_conf_m->get(['id_user' => $this->data['id_pengguna']]);
 		$this->data['berakhir']	= $this->Video_conf_m->getDateBerlangsung();
-		$this->data['berlangsung']	= $this->Video_conf_m->getDateBerakhir();
+		$this->data['berlangsung']	= $this->Video_conf_m->get();
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'data_video';
+		// $this->dump($this->data);
+		// exit;
+		$this->template($this->data, $this->module);
+	}
+	public function detail_video()
+	{
+		$this->load->model('Video_conf_m');
+		$this->data['id_video'] = $this->uri->segment(3);
+		$this->check_allowance(!isset($this->data['id_video']));
+		$this->data['data']	= $this->Video_conf_m->get_row(['id_video' => $this->data['id_video']]);
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'detail_video';
 		// $this->dump($this->data);
 		// exit;
 		$this->template($this->data, $this->module);
