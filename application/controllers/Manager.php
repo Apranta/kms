@@ -86,6 +86,22 @@ class Manager extends MY_Controller
 		}
 		$this->template($this->data, $this->module);
 	}
+
+	public function validateExplicit($id)
+	{
+		$this->load->model('User_m');
+		$this->load->model('explicit_m');
+		$this->explicit_m->update($id,['validasi'=>'validasi']);
+		redirect('manager/explicit');
+	}
+	public function validateTacit($id)
+	{
+		$this->load->model('User_m');
+		$this->load->model('tacit_m');
+		$this->tacit_m->update($id,['validasi'=>'validasi']);
+		redirect('manager/tacit');
+	}
+
 	public function delete_tacit($id)
 	{
 		$this->load->model("Tacit_m");

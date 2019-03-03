@@ -17,7 +17,10 @@
 						</div>
 						<div class="form-group">
 							<label>Url Video Streaming</label>
-							<input type="text" name="url" class="form-control">
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon1">https://www.youtube.com/embed/</span>
+								<input type="text" class="form-control" name="url" placeholder="kode url youtube" aria-describedby="sizing-addon1">
+							</div>
 						</div>
 						<div class="form-group">
 							<label>Tanggal Mulai Video</label>

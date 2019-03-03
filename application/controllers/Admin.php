@@ -357,4 +357,21 @@ class Admin extends MY_Controller
 		// exit;
 		$this->template($this->data, $this->module);
 	}
+
+	public function profile_perusahaan()
+	{
+		$this->load->model('Profile_m');
+		if ($this->POST('simpan')) {
+			$this->Profile_m->insert([
+				'nama'	=> $this->POST('nama'),
+				'isi'	=> $this->POST('isi')
+			]);
+			$this->flashmsg('Data save successfully');
+			redirect('admin/profile_perusahaan');
+			exit;
+		}
+		$this->data['data']	= $this->Profile_m->get();
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'profile';
+	}
 }

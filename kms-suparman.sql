@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jan 2019 pada 10.43
+-- Waktu pembuatan: 03 Mar 2019 pada 15.47
 -- Versi server: 10.1.37-MariaDB
--- Versi PHP: 7.3.0
+-- Versi PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -83,8 +83,18 @@ CREATE TABLE `user` (
   `telepon` varchar(12) NOT NULL,
   `password` varchar(32) NOT NULL,
   `role` enum('manager','staff','admin') NOT NULL,
-  `jabatan` varchar(250) DEFAULT NULL
+  `jabatan` varchar(250) DEFAULT NULL,
+  `bagian` enum('HR','HUMAS','HSE','ICT','') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `nama`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `telepon`, `password`, `role`, `jabatan`, `bagian`) VALUES
+(1, 'apranta', 'admin', 'admin', '', '0000-00-00', '', '202cb962ac59075b964b07152d234b70', 'admin', NULL, 'HR'),
+(2, 'suparman', 'suparman', 'laslasj', 'prabumulih', '2019-02-11', '08981073502', '202cb962ac59075b964b07152d234b70', 'staff', 'staff', 'HUMAS'),
+(3, 'apranta1', 'admin1', 'admin', '', '0000-00-00', '', '202cb962ac59075b964b07152d234b70', 'manager', NULL, 'HR');
 
 -- --------------------------------------------------------
 
@@ -97,7 +107,7 @@ CREATE TABLE `video_conf` (
   `judul_video` varchar(250) NOT NULL,
   `url` text NOT NULL,
   `deskripsi` text NOT NULL,
-  `date` int(11) NOT NULL,
+  `date` date NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -123,7 +133,8 @@ ALTER TABLE `komentar`
 -- Indeks untuk tabel `tacit`
 --
 ALTER TABLE `tacit`
-  ADD PRIMARY KEY (`id_tacit`);
+  ADD PRIMARY KEY (`id_tacit`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indeks untuk tabel `user`
@@ -165,13 +176,41 @@ ALTER TABLE `tacit`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `video_conf`
 --
 ALTER TABLE `video_conf`
   MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `explicit`
+--
+ALTER TABLE `explicit`
+  ADD CONSTRAINT `explicit_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Ketidakleluasaan untuk tabel `komentar`
+--
+ALTER TABLE `komentar`
+  ADD CONSTRAINT `komentar_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Ketidakleluasaan untuk tabel `tacit`
+--
+ALTER TABLE `tacit`
+  ADD CONSTRAINT `tacit_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Ketidakleluasaan untuk tabel `video_conf`
+--
+ALTER TABLE `video_conf`
+  ADD CONSTRAINT `video_conf_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

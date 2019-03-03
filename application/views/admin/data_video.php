@@ -19,7 +19,7 @@
 							<label>Url Video Streaming</label>
 							<div class="input-group">
 								<span class="input-group-addon" id="sizing-addon1">https://www.youtube.com/embed/</span>
-								<input type="text" class="form-control" placeholder="kode url youtube" aria-describedby="sizing-addon1">
+								<input type="text" class="form-control" name="url" placeholder="kode url youtube" aria-describedby="sizing-addon1">
 							</div>
 						</div>
 						<div class="form-group">

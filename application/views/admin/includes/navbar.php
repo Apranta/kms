@@ -9,6 +9,9 @@
                         <!-- BEGIN TOPBAR ACTIONS -->
                         <div class="topbar-actions">
                             <!-- END GROUP NOTIFICATION -->
+                            <div class="btn-group-notification btn-group" id="header_notification_bar" style="color: white;">
+                                <h4>PT PERTAMINA EP ASSET 2 PRABUMULIH &nbsp;</h4> 
+                            </div>
                             <!-- BEGIN USER PROFILE -->
                             <div class="btn-group-img btn-group">
                                 <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
