@@ -16,6 +16,10 @@
                                     <i class="icon-layers"></i>
                                     <span class="title">Dashboard</span>
                                 </a>
+                                <a href="<?= site_url('manager/profile') ?>" class="nav-link ">
+                                    <i class="icon-user"></i>
+                                    <span class="title">Profile</span>
+                                </a>
                             </li>
                             <li class="heading">
                                 <h3 class="uppercase">Data Pengetahuan</h3>
