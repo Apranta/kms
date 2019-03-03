@@ -55,7 +55,6 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Ganti Password?</label>
-                                                <input type="password" class="form-control" placeholder="password lama" name='password_lama'>
                                                 <input type="password" class="form-control" placeholder="password baru" name='password_baru'>
                                                 <input type="password" class="form-control" placeholder="konfirmasi password baru" name='konfirm_baru'>
                                                 <input type="hidden" name='password' value='<?=$data->password?>'>
