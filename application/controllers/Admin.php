@@ -48,6 +48,59 @@ class Admin extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
+	public function detail_user($id)
+	{
+		$this->load->model('User_m');
+		$this->data['data']		= $this->User_m->get_row(['id_user'=>$id]);
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'detail_user';
+		$this->template($this->data, $this->module);
+	}
+
+	public function edit_user($id)
+	{
+		$this->load->model('User_m');
+		$this->data['data']		= $this->User_m->get_row(['id_user'=>$id]);
+		if($this->post('submit'))
+		{
+			$password = $this->post('password');
+			if($this->post('password_lama') && $this->post('password_baru') && $this->post('konfirm_baru')){
+				if($this->data['data']->password != md5($this->post('password_lama')))
+				{
+					$this->flashmsg('Wrong Password');
+					redirect('admin/edit_user/'.$id);
+					exit;
+				}
+				if($this->post('konfirm_baru')!=$this->post('password_baru'))
+				{
+					$this->flashmsg('Password baru dan konfirmasi password tidak sama');
+					redirect('admin/edit_user/'.$id);
+					exit;
+				}
+				$password = md5($this->post('password_baru'));
+			}
+			$user = [
+				'username'=>$this->post('username'),
+				'nama'=>$this->post('nama'),
+				'alamat'=>$this->post('alamat'),
+				'tempat_lahir'=>$this->post('tempat_lahir'),
+				'tanggal_lahir'=>$this->post('tanggal_lahir'),
+				'telepon'=>$this->post('telepon'),
+				'password'=>$password,
+				'role'=>$this->post('role'),
+				'jabatan'=>$this->post('jabatan'),
+			];
+			$this->User_m->update($id, $user);
+			$this->flashmsg('edit sukses');
+			redirect('admin/edit_user/'.$id);
+			exit;
+		}
+		
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'edit_user';
+		$this->template($this->data, $this->module);
+	}
+
 	public function tambah_karyawan()
 	{
 		$this->load->model('User_m');

@@ -41,13 +41,13 @@
                             <td> <?= $value->jabatan ?>
                             </td>
                             <td>
-                                 <?= $value->bagian ?>
+                                 <?= $value->role ?>
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="<?= base_url('admin/detail-user/'.$value->id_user) ?>" class="btn btn-success">Detail</a>
-                                    <a href="<?= base_url('admin/edit-user/'.$value->id_user) ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?= base_url('admin/data-user?action=delete&id=' . $value->id_user) ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/detail_user/'.$value->id_user) ?>" class="btn btn-success">Detail</a>
+                                    <a href="<?= base_url('admin/edit_user/'.$value->id_user) ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/data_user?action=delete&id=' . $value->id_user) ?>" class="btn btn-danger">Hapus</a>
                                 </div>
                             </td>
                         </tr>
