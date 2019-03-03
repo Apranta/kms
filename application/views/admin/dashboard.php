@@ -50,4 +50,24 @@
     </div>
 </div>
 </center>
+<hr>
+<!-- <h2 class="title">Profile Perusahaan PT PERTAMINA EP ASSET 2 PRABUMULIH</h2>
+<div class="row">
+    <?php foreach ($profile as $data): ?>
+    <div class="col-md-6">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <span class="caption-subject bold font-grey-gallery uppercase">
+                <?= $data->nama ?></span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <p><?= $data->isi ?></p>
+            </div>
+        </div>
+    </div>
+        
+    <?php endforeach ?>
+</div> -->
 <!-- END DASHBOARD STATS 1-->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Mar 2019 pada 15.47
+-- Waktu pembuatan: 03 Mar 2019 pada 16.32
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -40,16 +40,21 @@ CREATE TABLE `explicit` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komentar`
+-- Struktur dari tabel `profile`
 --
 
-CREATE TABLE `komentar` (
-  `id_komentar` int(11) NOT NULL,
-  `komentar` text NOT NULL,
-  `date` date NOT NULL,
-  `id_jenis` enum('tacit','explicit') NOT NULL,
-  `id_user` int(11) NOT NULL
+CREATE TABLE `profile` (
+  `id_profile` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `isi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `profile`
+--
+
+INSERT INTO `profile` (`id_profile`, `nama`, `isi`) VALUES
+(2, 'sa', '<p>sassas</p>');
 
 -- --------------------------------------------------------
 
@@ -123,11 +128,10 @@ ALTER TABLE `explicit`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `komentar`
+-- Indeks untuk tabel `profile`
 --
-ALTER TABLE `komentar`
-  ADD PRIMARY KEY (`id_komentar`),
-  ADD KEY `id_user` (`id_user`);
+ALTER TABLE `profile`
+  ADD PRIMARY KEY (`id_profile`);
 
 --
 -- Indeks untuk tabel `tacit`
@@ -161,10 +165,10 @@ ALTER TABLE `explicit`
   MODIFY `id_explicit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `komentar`
+-- AUTO_INCREMENT untuk tabel `profile`
 --
-ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `profile`
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tacit`
@@ -193,12 +197,6 @@ ALTER TABLE `video_conf`
 --
 ALTER TABLE `explicit`
   ADD CONSTRAINT `explicit_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
-
---
--- Ketidakleluasaan untuk tabel `komentar`
---
-ALTER TABLE `komentar`
-  ADD CONSTRAINT `komentar_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Ketidakleluasaan untuk tabel `tacit`

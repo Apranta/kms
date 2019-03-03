@@ -29,6 +29,8 @@ class Admin extends MY_Controller
 
 	public function index()
 	{
+		$this->load->model('Profile_m');
+		$this->data['profile'] = $this->Profile_m->get();
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'dashboard';
 		$this->template($this->data, $this->module);
@@ -361,6 +363,13 @@ class Admin extends MY_Controller
 	public function profile_perusahaan()
 	{
 		$this->load->model('Profile_m');
+		$aksi = $this->GET('aksi');
+		if ($aksi === 'delete') {
+			$this->Profile_m->delete($this->GET('id'));
+			$this->flashmsg('Data Delete successfully');
+			redirect('admin/profile_perusahaan');
+			exit;
+		}
 		if ($this->POST('simpan')) {
 			$this->Profile_m->insert([
 				'nama'	=> $this->POST('nama'),
@@ -372,6 +381,27 @@ class Admin extends MY_Controller
 		}
 		$this->data['data']	= $this->Profile_m->get();
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'profile';
+		$this->data['content']	= 'profile_perusahaan';
+		$this->template($this->data, $this->module);
+	}
+
+	public function edit_profile()
+	{
+		$this->load->model('Profile_m');
+		$id = $this->uri->segment(3);
+		$this->check_allowance(!isset($id));
+		if ($this->POST('simpan')) {
+			$this->Profile_m->update($this->POST('id') , [
+				'nama'	=> $this->POST('nama'),
+				'isi'	=> $this->POST('isi')
+			]);
+			$this->flashmsg('Data save successfully');
+			redirect('admin/profile_perusahaan');
+			exit;
+		}
+		$this->data['data']	= $this->Profile_m->get_row(['id_profile' => $id]);
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'edit_profile';		
+		$this->template($this->data, $this->module);
 	}
 }
