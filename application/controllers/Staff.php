@@ -5,6 +5,7 @@ class Staff extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('user_m');
 		$this->module = 'staff';
 
 		$this->data['id_pengguna'] 	= $this->session->userdata('id_pengguna');
@@ -182,15 +183,54 @@ class Staff extends MY_Controller
 	{
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'profile';
+		$this->data['data'] = $this->user_m->get_row(['id_user'=>$this->data['id_pengguna']]);
 		$this->template($this->data, $this->module);
 	}
 
-	public function ganti_password()
+	public function edit_user($id)
 	{
+		$this->load->model('User_m');
+		$this->data['data']		= $this->User_m->get_row(['id_user'=>$id]);
+		if($this->post('submit'))
+		{
+			$password = $this->post('password');
+			if($this->post('password_lama') && $this->post('password_baru') && $this->post('konfirm_baru')){
+				if($this->data['data']->password != md5($this->post('password_lama')))
+				{
+					$this->flashmsg('Wrong Password');
+					redirect('staff/profile/'.$id);
+					exit;
+				}
+				if($this->post('konfirm_baru')!=$this->post('password_baru'))
+				{
+					$this->flashmsg('Password baru dan konfirmasi password tidak sama');
+					redirect('staff/profile/'.$id);
+					exit;
+				}
+				$password = md5($this->post('password_baru'));
+			}
+			$user = [
+				'username'=>$this->post('username'),
+				'nama'=>$this->post('nama'),
+				'alamat'=>$this->post('alamat'),
+				'tempat_lahir'=>$this->post('tempat_lahir'),
+				'tanggal_lahir'=>$this->post('tanggal_lahir'),
+				'telepon'=>$this->post('telepon'),
+				'password'=>$password,
+				'role'=>$this->post('role'),
+				'jabatan'=>$this->post('jabatan'),
+			];
+			$this->User_m->update($id, $user);
+			$this->flashmsg('edit sukses');
+			redirect('staff/profile/'.$id);
+			exit;
+		}
+		
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'ganti_password';
+		$this->data['content']	= 'edit_user';
 		$this->template($this->data, $this->module);
 	}
+
 	public function search()
 	{
 		$this->load->model('User_m');

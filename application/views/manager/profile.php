@@ -8,12 +8,12 @@
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
-                                            <a class="btn btn-sm green dropdown-toggle" href="<?= base_url('admin/data_user') ?>" > <i class="fa fa-angle-left"></i> Kembali
+                                            <a class="btn btn-sm green dropdown-toggle" href="<?= base_url('manager') ?>" > <i class="fa fa-angle-left"></i> Kembali
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <form action="<?=site_url("admin/edit_user/".$data->id_user)?>" method='post'>
+                                <form action="<?=site_url("manager/edit_user/".$data->id_user)?>" method='post'>
                                 <div class="portlet-body form">
                                         <div class="form-body">
                                             <div class="form-group">
@@ -55,6 +55,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Ganti Password?</label>
+                                                <input type="password" class="form-control" placeholder="password lama" name='password_lama'>
                                                 <input type="password" class="form-control" placeholder="password baru" name='password_baru'>
                                                 <input type="password" class="form-control" placeholder="konfirmasi password baru" name='konfirm_baru'>
                                                 <input type="hidden" name='password' value='<?=$data->password?>'>

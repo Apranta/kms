@@ -67,13 +67,7 @@ class Admin extends MY_Controller
 		if($this->post('submit'))
 		{
 			$password = $this->post('password');
-			if($this->post('password_lama') && $this->post('password_baru') && $this->post('konfirm_baru')){
-				if($this->data['data']->password != md5($this->post('password_lama')))
-				{
-					$this->flashmsg('Wrong Password');
-					redirect('admin/edit_user/'.$id);
-					exit;
-				}
+			if($this->post('password_baru') && $this->post('konfirm_baru')){
 				if($this->post('konfirm_baru')!=$this->post('password_baru'))
 				{
 					$this->flashmsg('Password baru dan konfirmasi password tidak sama');
