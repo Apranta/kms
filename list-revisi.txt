@@ -1,0 +1,3 @@
+List yg blm :
+1. Komentar (explicit dan video conference)
+2. Laporan dari admin ke manager (admin upload, dan manager biso download).

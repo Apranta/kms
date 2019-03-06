@@ -12,7 +12,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="btn-group">
-                                                    <a href="<?= base_url('admin/tambah-explicit') ?>" class="btn sbold green"> Add New
+                                                    <a href="<?= base_url('manager/tambah-explicit') ?>" class="btn sbold green"> Add New
                                                         <i class="fa fa-plus"></i>
                                                     </a>
                                                 </div>
@@ -49,9 +49,9 @@
                                                 <td><?=$e->date?></td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="<?= base_url('admin/detail-explicit/'.$e->id_explicit) ?>" class="btn btn-info"> <i class="fa fa-eye"></i></a>
-                                                        <a href="<?= base_url('admin/edit-explicit/'.$e->id_explicit) ?>" class="btn btn-primary"> <i class="fa fa-edit"></i></a>
-                                                        <a href="<?= base_url('admin/delete_explicit/'.$e->id_explicit) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                        <a href="<?= base_url('manager/detail-explicit/'.$e->id_explicit) ?>" class="btn btn-info"> <i class="fa fa-eye"></i></a>
+                                                        <a href="<?= base_url('manager/edit-explicit/'.$e->id_explicit) ?>" class="btn btn-primary"> <i class="fa fa-edit"></i></a>
+                                                        <a href="<?= base_url('manager/delete_explicit/'.$e->id_explicit) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

@@ -2,24 +2,17 @@
 	<div class="col-md-12">
 		<div class="portlet light bordered">
 			<div class="portlet-title">
-				<h4>Detail tacit</h4>
+				<h4><?= $data->judul ?></h4>
 			</div>
 			<div class="portlet-body">
-				<div class="row">
-					<div class="col-md-6">
-						
-						<h4>Masalah</h4>
-						<p>
-							<?= $data->masalah ?>
-						</p>
-					</div>
-					<div class="col-md-6">
-						<h4>Solusi</h4><hr>
-						<p>
-							<?= $data->solusi ?>
-						</p>
-					</div>
-				</div>
+				<h4>Keterangan</h4><hr>
+				<p>
+					<?= $data->keterangan ?>
+				</p>
+			</div>
+			<div class="portlet-footer">
+				
+				<a href="<?= base_url('assets/file/explicit/'.$data->id_explicit.".pdf")?>" download class="btn btn-link"><i class="fa fa-download"></i> Download Files</a>
 			</div>
 		</div>
 	</div>
@@ -34,10 +27,10 @@
 				</div>
 			</div>
 			<div class="portlet-body">
-				<?= form_open('admin/komentar') ?>
+				<?= form_open('manager/komentar') ?>
 				<div class="form-group">
-					<input type="hidden" name="id_jenis" value="<?= $data->id_tacit ?>">
-					<input type="hidden" name="jenis" value="tacit">
+					<input type="hidden" name="id_jenis" value="<?= $data->id_explicit ?>">
+					<input type="hidden" name="jenis" value="explicit">
 					<textarea name="komentar" class="form-control" rows="4"></textarea>
 				</div>
 				<input type="submit" name="simpan" value="Komentari" class="btn btn-primary">
@@ -51,7 +44,7 @@
 								<span class="mt-comment-author"><?= $this->User_m->get_row(['id_user' => $value->id_pegawai])->nama ?></span>
 								<span class="mt-comment-date"><?= $this->tanggal->convert_date($value->date) ?></span>
 							</div>
-							<div class="mt-comment-text"> 
+							<div class="mt-comment-text">
 								<?= $value->komentar ?>
 							</div>
 						</div>

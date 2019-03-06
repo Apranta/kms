@@ -20,6 +20,10 @@
                                     <i class="icon-user"></i>
                                     <span class="title">Profile</span>
                                 </a>
+                                <a href="<?= site_url('manager/laporan') ?>" class="nav-link ">
+                                    <i class="fa fa-list"></i>
+                                    <span class="title">Laporan</span>
+                                </a>
                             </li>
                             <li class="heading">
                                 <h3 class="uppercase">Data Pengetahuan</h3>

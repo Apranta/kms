@@ -23,6 +23,12 @@
                                     <span class="title">Profile Perusahaan</span>
                                 </a>
                             </li>
+                            <li class="nav-item  ">
+                                <a href="<?= site_url('Admin/laporan') ?>" class="nav-link ">
+                                    <i class="icon-layers"></i>
+                                    <span class="title">Laporan</span>
+                                </a>
+                            </li>
                             <li class="heading">
                                 <h3 class="uppercase">Data Pengetahuan</h3>
                             </li>

@@ -198,12 +198,7 @@ class Admin extends MY_Controller
 		redirect('admin/tacit');
 	}
 
-	public function detail_tacit()
-	{
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'detail_tacit';
-		$this->template($this->data, $this->module);
-	}
+
 
 	public function explicit()
 	{
@@ -276,12 +271,7 @@ class Admin extends MY_Controller
 		redirect('admin/explicit');
 	}
 
-	public function detail_explicit()
-	{
-		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'detail_explicit';
-		$this->template($this->data, $this->module);
-	}
+	
 
 	public function profile()
 	{
@@ -396,6 +386,74 @@ class Admin extends MY_Controller
 		$this->data['data']	= $this->Profile_m->get_row(['id_profile' => $id]);
 		$this->data['title']	= 'Dashboard';
 		$this->data['content']	= 'edit_profile';		
+		$this->template($this->data, $this->module);
+	}
+
+	public function komentar()
+	{
+		$this->load->model('Komentar_m');
+		if ($this->POST('simpan')) {
+			$this->Komentar_m->insert([
+				'id_pegawai' 	=> 	$this->data['id_pengguna'],
+				'id_jenis'		=>	$this->POST('id_jenis'),
+				'jenis'			=>	$this->POST('jenis'),
+				'komentar'		=> 	$this->POST('komentar')
+			]);
+			$url = 'detail_'.$this->POST('jenis').'/'.$this->POST('id_jenis');
+			redirect('admin/' . $url,'refresh');
+			exit;
+		}
+	}
+
+	public function detail_explicit()
+	{
+		$this->load->library('tanggal');
+		$this->load->model('Explicit_m');
+
+		$this->load->model('Komentar_m');
+		$id = $this->uri->segment(3);
+		$this->check_allowance(!isset($id));
+		$this->data['data']		= $this->Explicit_m->get_row(['id_explicit' => $id]);
+		$this->data['komentar']	= $this->Komentar_m->get(['id_jenis' => $id , 'jenis' => 'explicit']);
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'detail_explicit';
+		$this->template($this->data, $this->module);
+	}
+
+	public function detail_tacit()
+	{
+		$this->load->library('tanggal');
+		$this->load->model('Tacit_m');
+
+		$this->load->model('Komentar_m');
+		$id = $this->uri->segment(3);
+		$this->check_allowance(!isset($id));
+		$this->data['data']		= $this->Tacit_m->get_row(['id_tacit' => $id]);
+		$this->data['komentar']	= $this->Komentar_m->get(['id_jenis' => $id , 'jenis' => 'tacit']);
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'detail_tacit';
+		$this->template($this->data, $this->module);
+	}
+
+	public function laporan()
+	{
+		$this->load->model('Laporan_m');
+		if ($this->GET('aksi') === 'delete') {
+			$this->Laporan_m->delete($this->GET('id'));
+			redirect('admin/laporan','refresh');
+			exit;
+		}
+		if ($this->POST('simpan')) {
+			$this->Laporan_m->insert([
+				'id_pegawai' => $this->POST('pegawai'),
+				'deskripsi'		=> $this->POST('deskripsi')
+			]);
+			$this->uploadPDF($this->db->insert_id(), 'laporan' ,'file');
+			redirect('admin/laporan','refresh');exit;
+		}
+		$this->data['data']		= $this->Laporan_m->get();
+		$this->data['title']	= 'Dashboard';
+		$this->data['content']	= 'laporan';
 		$this->template($this->data, $this->module);
 	}
 }

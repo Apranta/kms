@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Mar 2019 pada 16.32
+-- Waktu pembuatan: 06 Mar 2019 pada 17.18
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -36,6 +36,56 @@ CREATE TABLE `explicit` (
   `date` date NOT NULL,
   `validasi` enum('validasi','menunggu','ditolak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `explicit`
+--
+
+INSERT INTO `explicit` (`id_explicit`, `id_user`, `judul`, `keterangan`, `date`, `validasi`) VALUES
+(1, 1, 'Informasi Team', 'as', '2019-03-06', 'validasi');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `komentar`
+--
+
+CREATE TABLE `komentar` (
+  `id_komentar` int(11) NOT NULL,
+  `id_jenis` int(11) NOT NULL,
+  `id_pegawai` int(11) NOT NULL,
+  `jenis` enum('tacit','explicit') NOT NULL,
+  `komentar` text NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `komentar`
+--
+
+INSERT INTO `komentar` (`id_komentar`, `id_jenis`, `id_pegawai`, `jenis`, `komentar`, `date`) VALUES
+(1, 1, 1, 'tacit', 'manusia', '2019-03-06 15:33:52'),
+(2, 1, 1, 'tacit', 'manusia123', '2019-03-06 15:34:36'),
+(3, 1, 1, 'explicit', 'nuub', '2019-03-06 15:40:31');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `laporan`
+--
+
+CREATE TABLE `laporan` (
+  `id_laporan` int(11) NOT NULL,
+  `id_pegawai` int(11) NOT NULL,
+  `deskripsi` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `laporan`
+--
+
+INSERT INTO `laporan` (`id_laporan`, `id_pegawai`, `deskripsi`) VALUES
+(3, 3, '<p>asasa</p>');
 
 -- --------------------------------------------------------
 
@@ -71,6 +121,13 @@ CREATE TABLE `tacit` (
   `validasi` enum('validasi','menunggu','ditolak') NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tacit`
+--
+
+INSERT INTO `tacit` (`id_tacit`, `judul_tacit`, `masalah`, `solusi`, `id_user`, `validasi`, `date`) VALUES
+(1, 'asas', 'asas', 'asa', 1, 'validasi', '2019-03-06');
 
 -- --------------------------------------------------------
 
@@ -128,6 +185,21 @@ ALTER TABLE `explicit`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Indeks untuk tabel `komentar`
+--
+ALTER TABLE `komentar`
+  ADD PRIMARY KEY (`id_komentar`),
+  ADD KEY `id_jenis` (`id_jenis`),
+  ADD KEY `id_pegawai` (`id_pegawai`);
+
+--
+-- Indeks untuk tabel `laporan`
+--
+ALTER TABLE `laporan`
+  ADD PRIMARY KEY (`id_laporan`),
+  ADD KEY `id_pegawai` (`id_pegawai`);
+
+--
 -- Indeks untuk tabel `profile`
 --
 ALTER TABLE `profile`
@@ -162,7 +234,19 @@ ALTER TABLE `video_conf`
 -- AUTO_INCREMENT untuk tabel `explicit`
 --
 ALTER TABLE `explicit`
-  MODIFY `id_explicit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_explicit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `komentar`
+--
+ALTER TABLE `komentar`
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `laporan`
+--
+ALTER TABLE `laporan`
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `profile`
@@ -174,7 +258,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT untuk tabel `tacit`
 --
 ALTER TABLE `tacit`
-  MODIFY `id_tacit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tacit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -197,6 +281,18 @@ ALTER TABLE `video_conf`
 --
 ALTER TABLE `explicit`
   ADD CONSTRAINT `explicit_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Ketidakleluasaan untuk tabel `komentar`
+--
+ALTER TABLE `komentar`
+  ADD CONSTRAINT `komentar_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `laporan`
+--
+ALTER TABLE `laporan`
+  ADD CONSTRAINT `laporan_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tacit`
